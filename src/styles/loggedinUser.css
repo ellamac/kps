@@ -1,0 +1,5 @@
+section.details {
+  > section {
+    padding: 0 0 1rem 0;
+  }
+}
