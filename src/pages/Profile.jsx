@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import NewCodeInput from './NewCodeInput';
+import { useAuth } from '../hooks/useAuth';
+
+import NewCodeInput from '../components/NewCodeInput';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import '../styles/loggedinUser.css';
-import Loading from './loading';
+import { useState } from 'react';
 
-const UserProfile = ({ user, logOut, scoreBoard }) => {
+export const ProfilePage = () => {
+  const { user, logout } = useAuth();
   const [copyStatus, setCopyStatus] = useState(false); // To indicate if the text was copied
-
   const onCopyText = () => {
     setCopyStatus(true);
     setTimeout(() => setCopyStatus(false), 2000); // Reset status after 2 seconds
   };
 
   return (
-    <section className='details'>
+    <>
       <h2>Hei {user.nimi}!</h2>
       <section className='personal'>
         <h3>Käyttäjätiedot</h3>
@@ -24,15 +24,9 @@ const UserProfile = ({ user, logOut, scoreBoard }) => {
       <section className='game'>
         <h3>Pelit</h3>
 
-        {scoreBoard ? (
-          <>
-            <p>Voittoja: {scoreBoard.voitot_lkm || 0}</p>
-            <p>Häviöitä: {scoreBoard.haviot_lkm || 0}</p>
-            <p>Pisteet: {scoreBoard.pisteet || 0}</p>
-          </>
-        ) : (
-          <p>et ole vielä pelannut</p>
-        )}
+        <p>Voittoja: {user.voitot_lkm || 0}</p>
+        <p>Häviöitä: {user.haviot_lkm || 0}</p>
+        <p>Pisteet: {user.pisteet || 0}</p>
       </section>
       <section className='id'>
         <h3>Käyttäjätunniste</h3>
@@ -52,12 +46,10 @@ const UserProfile = ({ user, logOut, scoreBoard }) => {
       </section>
       <section className='logout'>
         <h3>Kirjaudu ulos</h3>
-        <button type='button' onClick={logOut}>
+        <button type='button' onClick={logout}>
           Kirjaudu ulos
         </button>
       </section>
-    </section>
+    </>
   );
 };
-
-export default UserProfile;

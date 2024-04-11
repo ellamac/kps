@@ -1,6 +1,6 @@
 const Papa = require('papaparse');
 
-const parseFile = (url) =>
+export const parseFile = (url) =>
   new Promise((resolve) => {
     Papa.parse(url, {
       download: true,
@@ -11,7 +11,7 @@ const parseFile = (url) =>
     });
   });
 
-export async function fetchParsedData(url) {
+export const fetchParsedData = async (url) => {
   const parsedData = await parseFile(url);
   return parsedData;
-}
+};

@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import PopUp from './PopUp';
 import Form from './GameForm';
 import cleanString from '../helpers/cleanString';
+import { useAuth } from '../hooks/useAuth';
+import { createGame } from '../loaders/points';
 
-const Register = ({ user, createGame }) => {
+const GameRegister = () => {
+  const { user } = useAuth();
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState(null);
   const [userWon, setUserWon] = useState(true);
@@ -55,10 +58,8 @@ const Register = ({ user, createGame }) => {
     setOpen(true);
   };
   return (
-    <main className='register main-content'>
+    <>
       <h2>Rekisteröi peli</h2>
-      <h3>Valitse sinun tuloksesi:</h3>
-
       <Form
         handleSubmit={handleSubmit}
         pelaajat={pelaajat}
@@ -73,8 +74,8 @@ const Register = ({ user, createGame }) => {
         open={open}
         setOpen={setOpen}
       />
-    </main>
+    </>
   );
 };
 
-export default Register;
+export default GameRegister;

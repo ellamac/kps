@@ -4,7 +4,7 @@
   --main-highlight-color: green;
   --main-light-color: #f7f8f9;
 
-  --main-box-shadow: 6px 6px 9px rgba(0, 0, 0, 0.2);
+  --main-box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
 
   --kimara-karviainen: #7fdb82;
   --kimara-lakka: #ffb16f;
@@ -13,253 +13,136 @@
   --kimara-orvokki: #100122;
   --kimara-vuokko: #f8f4e8;
 
-  --fs-p: 1.05rem;
-  --fs-h3: 1.25rem;
+  --fs-p: 1rem;
+  --fs-h3: 1.17rem;
   --fs-h2: 1.5rem;
-  --fs-h1: 1.75rem;
+  --fs-h1: 2rem;
 
   --fw-p: 300;
   --fw-h3: 700;
   --fw-h2: 800;
   --fw-h1: 900;
 
-  @media (min-width: 75em) {
-    --fs-p: 1.125rem;
-    --fs-h3: 1.5rem;
-    --fs-h2: 2rem;
-    --fs-h1: 2.5rem;
-  }
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+  --app-bar-height: 4rem;
 }
 
 html,
 body {
-  padding: 0;
+  height: 100dvh;
+  width: 100dvw;
   margin: 0;
-  height: 100vh;
+  padding: 0;
   font-family: var(--main-font-family);
-  font-size: var(--fs-p);
-  line-height: 1.5;
   font-weight: var(--fw-p);
   background-color: var(--kimara-vuokko);
   color: var(--kimara-orvokki);
 }
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  height: 100dvh;
+  width: 100dvw;
+  background-color: var(--kimara-vuokko);
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+header.main-header,
+footer.main-footer {
+  height: var(--app-bar-height);
+}
+
+header.main-header {
+  text-align: center;
+  background-color: var(--kimara-karviainen);
+  > h1 {
+    margin: 0;
+    line-height: var(--app-bar-height);
+  }
+}
+
+footer.main-footer {
+  background-color: var(--kimara-karviainen);
+
+  > nav {
+    width: 100%;
+    height: var(--app-bar-height);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+    > a {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      width: 100%;
+      height: var(--app-bar-height);
+      color: var(--kimara-orvokki);
+      text-decoration: none;
+      font-weight: var(--fw-h3);
+      > p {
+        font-weight: var(--fw-h3);
+        font-stretch: ultra-expanded;
+        font-size: var(--fs-h3);
+      }
+      &.active {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+main.main-content {
+  background-color: var(--kimara-vuokko);
+
+  height: calc(100dvh - 4rem);
+  overflow: scroll;
+  padding: 0 1rem 1rem;
+}
 
 h1 {
-  font-size: var(--fs-h1);
-  line-height: 1.75;
   font-weight: var(--fw-h1);
   font-stretch: ultra-expanded;
+  font-size: var(--fs-h1);
 }
 
 h2 {
-  font-size: var(--fs-h2);
-  line-height: 1.6;
   font-weight: var(--fw-h2);
   font-stretch: ultra-expanded;
-  padding-bottom: 0.5rem;
+  font-size: var(--fs-h2);
 }
 
-h3 {
-  font-size: var(--fs-h3);
-  line-height: 1.5;
+h3,
+legend,
+nav a p {
   font-weight: var(--fw-h3);
   font-stretch: ultra-expanded;
-  padding-bottom: 0.5rem;
+  font-size: var(--fs-h3);
 }
 
 p,
 a {
-  font-size: var(--fs-p);
-  line-height: 1.4;
   font-weight: var(--fw-p);
-  padding-bottom: 0.5rem;
-  &.bold {
-    font-weight: var(--fw-h3);
-  }
-
-  &.display-none {
-    display: none;
-  }
-}
-
-section.app {
-  height: 100vh;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-between;
-  /*sizes for header, main and footer*/
-  > header.main-header {
-    flex: 0 0 7vh;
-  }
-  > main.main-content {
-    flex: 0 0 calc(100vh - 7vh - 7vh);
-    overflow: scroll;
-  }
-  > footer.main-footer {
-    flex: 0 0 7vh;
-  }
-}
-
-header.main-header {
-  background-color: var(--kimara-karviainen);
-  text-align: center;
-  color: var(--kimara-vuokko);
-}
-
-main.main-content {
-  padding: 1rem;
-  display: flex;
-  flex-flow: column nowrap;
-  gap: 1rem;
-}
-
-footer.main-footer {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: stretch;
-  align-items: stretch;
-  gap: 0.2rem;
-  > a {
-    flex: 1 1 auto;
-    border-radius: 0;
-    color: var(--kimara-vuokko);
-    text-decoration: none;
-    background-color: var(--kimara-lakka);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: var(--fs-h3);
-    font-weight: var(--fw-h3);
-  }
-}
-
-*:has(> .card) {
-  padding: 1rem;
-}
-.card {
-  display: flex;
-  flex-flow: column;
-  border-radius: 1.5rem;
-  box-shadow: var(--main-box-shadow);
-  background-color: var(--main-light-color);
-  transform: translate(-5px, 0px);
-}
-
-.border {
-  border-radius: 1.5rem;
-  border: 0.4rem solid var(--kimara-lakka);
+  font-size: var(--fs-p);
 }
 
 button {
   background-color: var(--kimara-pihlaja);
   border-radius: 100rem;
   border: 0.5rem solid var(--kimara-pihlaja);
-  font-size: var(--fs-h3);
+  font-size: 1rem;
   color: var(--kimara-vuokko);
   font-weight: var(--fw-h3);
-  margin: 0.25rem 0.1rem;
+  margin: 0;
+  padding: 0;
   width: 100%;
-  height: 3rem;
-}
-
-details {
-  background-color: var(--main-light-color);
-
-  > summary {
-    font-size: var(--fs-p);
-    font-weight: var(--fw-h3);
-    padding: 0.75rem;
-    background-color: var(--main-light-color);
-
-    list-style: none;
-  }
-  > summary::-webkit-details-marker {
-    display: none;
-  }
-}
-details[open] {
-  background-color: var(--main-light-color);
-
-  border: 0.4rem solid var(--kimara-lakka);
-
-  > *:not(summary) {
-    padding: 0rem 1rem 1rem;
-  }
-  > summary {
-    border: none;
-    box-shadow: none;
-    font-size: var(--fs-p);
-    font-weight: var(--fw-h3);
-
-    border-radius: 1.5rem;
-    padding: 0.75rem;
-
-    background-color: var(--main-light-color);
-    list-style: none;
-  }
-  > summary::-webkit-details-marker {
-    display: none;
-  }
-}
-
-section.popup {
-  background-color: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(15px);
-  position: absolute;
-  height: 100vh;
-  width: 100vw;
-  top: 0;
-  left: 0;
-  padding: 25vh 1rem;
-
-  > section {
-    padding: 1rem;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    gap: 1rem;
-    box-shadow: none;
-    transform: none;
-    > p {
-      flex: 2 1 auto;
-      text-align: center;
-    }
-    > button {
-      flex: 1 1 calc(50% - 1rem);
-    }
-  }
-}
-
-label {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: start;
-  align-items: start;
-  gap: 0.25rem;
-}
-
-input {
-  padding: 0.5rem 1rem 0.5rem 1rem;
-  border-radius: 100rem;
-  box-shadow: inset var(--main-box-shadow);
-  font-size: var(--fs-m);
-}
-input[type='number'] {
-  width: 7rem;
-}
-
-input {
-  border: 0.4rem solid var(--kimara-vuokko);
-  &:focus {
-    outline: none !important;
-    border: 0.4rem solid var(--kimara-pihlaja);
-  }
+  max-width: 25rem;
 }

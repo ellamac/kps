@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NewCodeInput from './NewCodeInput';
-import { logIn } from '../helpers/logger';
-import { PLAYERS_URL } from '../helpers/urls';
-import '../styles/loginUser.css';
 
-const UserLoginForm = ({ logIn }) => {
+const UserLoginForm = ({ login }) => {
   const [inputUserID, setInputUserID] = useState('');
 
   return (
@@ -15,19 +12,22 @@ const UserLoginForm = ({ logIn }) => {
           inputUserID={inputUserID}
           setInputUserID={setInputUserID}
         />
-        <button
-          type='button'
-          onClick={() =>
-            logIn({
-              nimi: '',
-              savu_nro: '',
-              ikakausi: '',
-              kayttaja_id: inputUserID,
-            })
-          }
-        >
-          Kirjaudu
-        </button>
+
+        <p>
+          <button
+            type='button'
+            onClick={() =>
+              login({
+                nimi: '',
+                savu_nro: '',
+                ikakausi: '',
+                kayttaja_id: inputUserID,
+              })
+            }
+          >
+            Kirjaudu
+          </button>
+        </p>
       </form>
     </section>
   );

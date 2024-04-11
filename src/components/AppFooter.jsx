@@ -1,12 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
-const AppFooter = ({ user }) => {
+const AppFooter = ({ pages }) => {
   return (
     <footer className='main-footer'>
-      <Link to={`main`}>stats</Link>
-      {user && <Link to={`register`}>register</Link>}
-      <Link to={`you`}>you</Link>
+      <nav>
+        {pages.map((p, i) => (
+          <NavLink key={`nav-button-${i}`} to={p.path} activeClassName='active'>
+            {p.icon || ''}
+            <p>{p.label}</p>
+          </NavLink>
+        ))}
+      </nav>
     </footer>
   );
 };

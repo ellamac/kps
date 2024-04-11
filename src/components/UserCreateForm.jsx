@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import PopUp from './PopUp';
-import { fetchParsedData } from '../helpers/resolved-papa-data';
+
 import cleanString from '../helpers/cleanString';
-import { PLAYERS_URL, USER_FORM_ACTION } from '../helpers/urls';
+import { USER_FORM_ACTION } from '../helpers/urls';
 import { createUserID } from '../helpers/userID';
-import { logIn, logInLocal } from '../helpers/logger';
-import '../styles/loginUser.css';
+
+import { useAuth } from '../hooks/useAuth';
 
 const UserCreateForm = ({ createUser }) => {
+  const { loginNew } = useAuth();
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState(null);
   const [newUser, setNewUser] = useState({
@@ -39,8 +40,8 @@ const UserCreateForm = ({ createUser }) => {
       nimi: cleanString(newUser.nimi),
       kayttaja_id: newUser.kayttaja_id,
     };
-
     createUser(userToSubmit, formData);
+    loginNew(userToSubmit);
   };
 
   const handleSubmit = (e) => {
@@ -111,44 +112,48 @@ const UserCreateForm = ({ createUser }) => {
             Aikuinen
           </label>
         </fieldset>
-        <label>
-          Sinun nimi
-          <p className='info'>
+        <p>
+          <label>
+            <span>Sinun nimi: </span>
+            {/*           <p className='info'>
             Esim. Ella, Ella M, Ellu. Tämä nimi näkyy kaikille sovellusta
             käyttäville, myös niille jotka eivät ole luoneet tunnusta. Mikäli
             tiedät savussasi olevan kaimoja, lisää nimeen sukunimen ensimmäinen
             kirjain tai käytä partionimeä!
-          </p>
-          <input
-            name='entry.930006115'
-            value={newUser.nimi}
-            type='text'
-            required
-            min={2}
-            onChange={(e) =>
-              setNewUser((prev) => {
-                return { ...prev, nimi: e.target.value };
-              })
-            }
-          />
-        </label>
-        <label>
-          Sinun savun numero
-          <input
-            label='Sinun savun numero'
-            name='entry.2072447703'
-            value={newUser.savu_nro}
-            type='number'
-            max={999}
-            min={100}
-            required
-            onChange={(e) =>
-              setNewUser((prev) => {
-                return { ...prev, savu_nro: e.target.value };
-              })
-            }
-          />
-        </label>
+          </p> */}
+            <input
+              name='entry.930006115'
+              value={newUser.nimi}
+              type='text'
+              required
+              min={2}
+              onChange={(e) =>
+                setNewUser((prev) => {
+                  return { ...prev, nimi: e.target.value };
+                })
+              }
+            />
+          </label>
+        </p>
+        <p>
+          <label>
+            <span>Sinun savun numero: </span>
+            <input
+              label='Sinun savun numero'
+              name='entry.2072447703'
+              value={newUser.savu_nro}
+              type='number'
+              max={999}
+              min={100}
+              required
+              onChange={(e) =>
+                setNewUser((prev) => {
+                  return { ...prev, savu_nro: e.target.value };
+                })
+              }
+            />
+          </label>
+        </p>
         <input
           hidden
           readOnly
@@ -156,8 +161,9 @@ const UserCreateForm = ({ createUser }) => {
           type='text'
           value={newUser.kayttaja_id}
         />
-
-        <button type='submit'>Luo käyttäjä</button>
+        <p>
+          <button type='submit'>Luo käyttäjä</button>
+        </p>
       </form>
       <PopUp
         msg={

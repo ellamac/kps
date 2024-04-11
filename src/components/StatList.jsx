@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 const StatList = ({ scoreBoard }) => {
   return (
-    <section className='rank-list'>
+    <ol className='rank-list'>
       {scoreBoard.map((d, i) => (
-        <section className='rank-item'>
-          <p className='rank-number'>{i + 1}.</p>
+        <li key={`statlist-${i}`} className='rank-item'>
           <details key={i} className='player card'>
             <summary className={`player-summary border ${d.ikakausi}`}>
               {d.nimi}: {d.pisteet}p
@@ -18,9 +17,9 @@ const StatList = ({ scoreBoard }) => {
               <p>Häviöitä: {d.haviot_lkm}</p>
             </section>
           </details>
-        </section>
+        </li>
       ))}
-    </section>
+    </ol>
   );
 };
 

@@ -1,53 +1,68 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {
-  BrowserRouter,
-  createBrowserRouter,
-  RouterProvider,
-  Routes,
-  Route,
-} from 'react-router-dom';
-import ErrorPage from './components/ErrorPage';
-import Register from './components/GameRegister';
-import User from './components/User';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './App';
 import './styles/index.css';
 import './styles/form.css';
-import './styles/statlist.css';
+import './styles/card.css';
+import './styles/details.css';
 import './styles/loading.css';
+import './styles/popup.css';
 
-import Main from './components/Main';
-const root = ReactDOM.createRoot(document.getElementById('root'));
+/* const root = ReactDOM.createRoot(document.getElementById('root'));
 
-/* const router = createBrowserRouter([
+const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/ksp',
     element: <App />,
+    id: 'app',
     errorElement: <ErrorPage />,
     children: [
       {
         index: true,
-        path: 'main',
         element: <Main />,
+        id: 'points',
+
+        loader: getPoints,
       },
       {
-        path: 'register',
-        element: <Register />,
+        path: '/ksp/login',
+        element: <LoginPage />,
+        id: 'login',
       },
       {
-        path: 'you',
+        path: '/ksp/user',
         element: <User />,
+        id: 'user',
+
+        children: [
+          {
+            path: '/ksp/user/:userId',
+            element: <UserProfile />,
+            loader: getPlayers,
+          },
+        ],
+      },
+      {
+        path: '/ksp/register',
+        id: 'register',
+
+        element: (
+          <ProtectedRoute>
+            <Register />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
-]); */
-root.render(
+]);
+
+root.render(<RouterProvider router={router} />); */
+
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 

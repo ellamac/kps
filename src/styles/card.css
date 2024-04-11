@@ -1,0 +1,16 @@
+*:has(> .card) {
+  padding: 0.33rem;
+}
+.card {
+  display: flex;
+  flex-flow: column;
+  border-radius: 1.5rem;
+  box-shadow: var(--main-box-shadow);
+  background-color: var(--main-light-color);
+  transform: translate(-5px, 0px);
+}
+
+.border {
+  border-radius: 1.5rem;
+  border: 0.4rem solid var(--kimara-lakka);
+}

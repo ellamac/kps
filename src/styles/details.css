@@ -1,0 +1,46 @@
+li:has(details.player.card)::marker {
+  font-weight: var(--fw-h3);
+  font-stretch: ultra-expanded;
+  font-size: var(--fs-h3);
+}
+
+details {
+  max-width: 25rem;
+  background-color: var(--main-light-color);
+
+  > summary {
+    font-weight: var(--fw-h3);
+    font-stretch: expanded;
+    padding: 0.75rem;
+    background-color: var(--main-light-color);
+
+    list-style: none;
+  }
+  > summary::-webkit-details-marker {
+    display: none;
+  }
+}
+details[open] {
+  background-color: var(--main-light-color);
+
+  border: 0.4rem solid var(--kimara-lakka);
+
+  > *:not(summary) {
+    padding: 0rem 1rem 1rem;
+  }
+  > summary {
+    border: none;
+    box-shadow: none;
+
+    font-weight: var(--fw-h3);
+
+    border-radius: 1.5rem;
+    padding: 0.75rem;
+
+    background-color: var(--main-light-color);
+    list-style: none;
+  }
+  > summary::-webkit-details-marker {
+    display: none;
+  }
+}
