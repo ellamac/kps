@@ -5,16 +5,21 @@ import CopyToClipboard from 'react-copy-to-clipboard';
 import { useState } from 'react';
 
 export const ProfilePage = () => {
-  const { user, logout } = useAuth();
+  const { user, login, logout } = useAuth();
   const [copyStatus, setCopyStatus] = useState(false); // To indicate if the text was copied
   const onCopyText = () => {
     setCopyStatus(true);
     setTimeout(() => setCopyStatus(false), 2000); // Reset status after 2 seconds
   };
 
-  return (
+  return !user || Object.keys(user).length === 0 ? (
+    <p>loading....</p>
+  ) : (
     <>
       <h2>Hei {user.nimi}!</h2>
+      <button type='button' onClick={() => login(user)}>
+        päivitä
+      </button>
       <section className='personal'>
         <h3>Käyttäjätiedot</h3>
         <p>nimi: {user.nimi}</p>

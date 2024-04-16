@@ -5,6 +5,7 @@ import AppFooter from './AppFooter';
 import AppHeader from './AppHeader';
 import { HomeMax } from '@mui/icons-material';
 import { House, HouseSimple, Ranking, User } from '@phosphor-icons/react';
+import Loading from './Loading';
 
 export const HomeLayout = () => {
   const { user } = useAuth();
@@ -17,6 +18,7 @@ export const HomeLayout = () => {
   return (
     <>
       <AppHeader />
+
       <main className='main-content'>{outlet}</main>
       <AppFooter
         pages={[

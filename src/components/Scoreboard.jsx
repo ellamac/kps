@@ -25,7 +25,7 @@ const Main = (props) => {
           <StatList scoreBoard={points} />
         </>
       ) : (
-        <p>Ei pelejä vielä!</p>
+        <p>{points?.length === 0 ? 'Ei pelejä vielä! ' : 'loading...'}</p>
       )}
     </>
   );

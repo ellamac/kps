@@ -9,11 +9,15 @@ export const usePoints = (keyName, defaultValue) => {
   }, []);
 
   const updatePoints = async (newValue) => {
+    setPoints(undefined);
     console.log('updating points');
     const { currentPoints } = await getPoints();
     console.log('updated points');
 
-    setPoints(currentPoints || []);
+    setPoints(
+      currentPoints.sort((a, b) => parseInt(b.pisteet) - parseInt(a.pisteet)) ||
+        []
+    );
   };
 
   return [points, updatePoints];

@@ -6,7 +6,8 @@ import { useAuth } from '../hooks/useAuth';
 import { createGame } from '../loaders/points';
 
 const GameRegister = () => {
-  const { user } = useAuth();
+  const { user, updateUser } = useAuth();
+
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState(null);
   const [userWon, setUserWon] = useState(true);
@@ -60,14 +61,26 @@ const GameRegister = () => {
   return (
     <>
       <h2>Rekisteröi peli</h2>
-      <Form
-        handleSubmit={handleSubmit}
-        pelaajat={pelaajat}
-        setPelaajat={setPelaajat}
-        playerResult={userWon}
-        user={user}
-        onRadioButtonChange={switchPlayers}
-      />
+      {!user || Object.keys(user).length === 0 ? (
+        <p>loading...</p>
+      ) : 'timestamp' in user ? (
+        <Form
+          handleSubmit={handleSubmit}
+          pelaajat={pelaajat}
+          setPelaajat={setPelaajat}
+          playerResult={userWon}
+          user={user}
+          onRadioButtonChange={switchPlayers}
+        />
+      ) : (
+        <label>
+          Tunnuksesi ei ole vielä tallentunut tietokantaan{' '}
+          <button type='button' onClick={() => updateUser(user)}>
+            päivitä sivu ja kokeile uudestaan
+          </button>
+        </label>
+      )}
+
       <PopUp
         msg={`Voittaja: ${pelaajat.voittajaNimi}, ${pelaajat.voittajaNumero}, Häviäjä: ${pelaajat.haviajaNimi}, ${pelaajat.haviajaNumero}`}
         handleOK={submitForm}

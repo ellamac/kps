@@ -3,8 +3,8 @@ import '../styles/loading.css';
 
 const Loading = (props) => {
   return (
-    <section className='loading'>
-      <div className='element tails'>
+    <section className='loading wrap'>
+      {/*       <div className='element tails'>
         <div className='side-a '>🪨</div>
         <div className='side-b '>👊</div>
       </div>
@@ -15,7 +15,9 @@ const Loading = (props) => {
       <div className='element tails'>
         <div className='side-a'>📄</div>
         <div className='side-b'>✋</div>
-      </div>
+      </div> */}
+
+      <div class='spinner'></div>
     </section>
   );
 };

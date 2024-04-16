@@ -5,6 +5,7 @@ import AppFooter from './AppFooter';
 import AppHeader from './AppHeader';
 
 import { User, Ranking, PlusCircle } from '@phosphor-icons/react';
+import Loading from './Loading';
 
 export const ProtectedLayout = () => {
   const { user } = useAuth();
@@ -17,6 +18,7 @@ export const ProtectedLayout = () => {
   return (
     <>
       <AppHeader />
+
       <main className='main-content'>{outlet}</main>
       <AppFooter
         pages={[
