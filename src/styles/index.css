@@ -102,10 +102,13 @@ footer.main-footer {
 
 main.main-content {
   background-color: var(--kimara-vuokko);
-
   height: calc(100dvh - 4rem);
   overflow: scroll;
   padding: 0 1rem 1rem;
+
+  @media (orientation: landscape) {
+    padding: 0 calc((100vw - 40ch) / 2);
+  }
 }
 
 h1 {

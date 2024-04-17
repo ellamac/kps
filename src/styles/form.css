@@ -93,3 +93,7 @@ fieldset:has(label > input[type='radio']) {
     }
   }
 }
+
+fieldset {
+  padding: 0;
+}
