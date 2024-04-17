@@ -40,5 +40,6 @@ export const router = createBrowserRouter(
         <Route path='*' element={<Scoreboard />} />
       </Route>
     </Route>
-  )
+  ),
+  { basename: '/kps' }
 );
