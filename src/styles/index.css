@@ -14,11 +14,13 @@
   --kimara-harmaa-orvokki: #8d858e;
   --kimara-vuokko: #f8f4e8;
 
-  --color-sakset: #ffb16f;
-  --color-kivi: #beb8b7;
-  --color-paperi: #f8f4e8;
-  --color-success: #7fdb82;
-  --color-error: #ee5b61;
+  --main-highlight-scissors: #ffb16f;
+  --main-highlight-rock: #beb8b7;
+  --main-highlight-paper: #f8f4e8;
+  --main-success-color: #7fdb82;
+  --main-error-color: #ee5b61;
+  --main-dark-color: #100122;
+  --main-light-color: #f7f8f9;
 
   --fs-p: 0.9rem;
   --fs-h3: 1rem;
@@ -41,8 +43,8 @@ body {
   padding: 0;
   font-family: var(--main-font-family);
   font-weight: var(--fw-p);
-  background-color: var(--kimara-vuokko);
-  color: var(--kimara-orvokki);
+  background-color: var(--main-highlight-paper);
+  color: var(--main-dark-color);
 }
 * {
   box-sizing: border-box;
@@ -51,7 +53,7 @@ body {
 #root {
   height: 100dvh;
   width: 100dvw;
-  background-color: var(--kimara-vuokko);
+  background-color: var(--main-highlight-paper);
 
   display: flex;
   flex-flow: column nowrap;
@@ -67,7 +69,7 @@ footer.main-footer {
 
 header.main-header {
   text-align: center;
-  background-color: var(--color-kivi);
+  background-color: var(--main-highlight-rock);
   > h1 {
     margin: 0;
     line-height: var(--app-bar-height);
@@ -90,12 +92,12 @@ footer.main-footer {
       gap: 0.5rem;
       width: 100%;
       height: var(--app-bar-height);
-      color: var(--color-paperi);
+      color: var(--main-highlight-paper);
       text-decoration: none;
       font-weight: var(--fw-h3);
-      background-color: var(--kimara-vuokko);
+      background-color: var(--main-highlight-paper);
       > svg {
-        fill: var(--color-kivi);
+        fill: var(--main-highlight-rock);
       }
       > p {
         font-weight: var(--fw-h3);
@@ -103,11 +105,11 @@ footer.main-footer {
         display: none;
       }
       &.active {
-        background-color: var(--kimara-vuokko);
+        background-color: var(--main-highlight-paper);
         text-decoration: underline;
 
         > svg {
-          fill: var(--color-sakset);
+          fill: var(--main-highlight-scissors);
         }
       }
     }
@@ -115,7 +117,7 @@ footer.main-footer {
 }
 
 main.main-content {
-  background-color: var(--kimara-vuokko);
+  background-color: var(--main-highlight-paper);
   height: calc(100dvh - 4rem);
   overflow: scroll;
   padding: 0 1rem 1rem;
@@ -152,14 +154,22 @@ a {
 }
 
 button {
-  background-color: var(--kimara-pihlaja);
+  background-color: var(--main-highlight-scissors);
   border-radius: 100rem;
-  border: 0.5rem solid var(--kimara-pihlaja);
+  border: 0.5rem solid var(--main-highlight-scissors);
   font-size: 1rem;
-  color: var(--kimara-vuokko);
+  color: var(--main-highlight-paper);
   font-weight: var(--fw-h3);
   margin: 0;
   padding: 0;
   width: 100%;
   max-width: 25rem;
+  &.success {
+    background-color: var(--main-success-color);
+    border: 0.5rem solid var(--main-success-color);
+  }
+  &.error {
+    background-color: var(--main-error-color);
+    border: 0.5rem solid var(--main-error-color);
+  }
 }

@@ -9,8 +9,12 @@ const PopUp = ({ msg, handleOK, open, setOpen }) => {
       <section className='popup'>
         <section className='card border'>
           <p>{msg}</p>
-          <button onClick={() => handleClick(false)}>peruuta</button>
-          <button onClick={() => handleClick(true)}>ok!</button>
+          <button className='error' onClick={() => handleClick(false)}>
+            peruuta
+          </button>
+          <button className='success' onClick={() => handleClick(true)}>
+            ok!
+          </button>
         </section>
       </section>
     )

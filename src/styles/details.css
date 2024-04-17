@@ -23,7 +23,7 @@ details {
 details[open] {
   background-color: var(--main-light-color);
 
-  border: 0.4rem solid var(--kimara-lakka);
+  border: 0.4rem solid var(--main-highlight-scissors);
 
   > *:not(summary) {
     padding: 0rem 1rem 1rem;

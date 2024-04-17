@@ -17,11 +17,11 @@ input[type='number'] {
 }
 
 input {
-  border: 0.4rem solid var(--kimara-vuokko);
+  border: 0.4rem solid var(--main-highlight-paper);
 
   &:focus {
     outline: none !important;
-    border: 0.4rem solid var(--kimara-lakka);
+    border: 0.4rem solid var(--main-highlight-scissors);
   }
 }
 
@@ -87,7 +87,7 @@ fieldset:has(label > input[type='radio']) {
       display: none;
     }
     &:has(input:checked) {
-      background-color: var(--kimara-lakka);
+      background-color: var(--main-highlight-scissors);
       color: var(--main-light-color);
       font-weight: var(--fw-h3);
     }
