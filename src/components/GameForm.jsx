@@ -70,7 +70,7 @@ const Form = ({
               label='Voittajan savun numero'
               name='entry.867017418'
               value={pelaajat.voittajaNumero}
-              type='number'
+              type='text'
               required
               readOnly={playerResult}
               onChange={(e) =>
@@ -108,7 +108,7 @@ const Form = ({
               label='Häviäjän savun numero'
               name='entry.397104837'
               value={pelaajat.haviajaNumero}
-              type='number'
+              type='text'
               required
               readOnly={!playerResult}
               onChange={(e) =>

@@ -3,10 +3,8 @@ import { useAuth } from '../hooks/useAuth';
 
 import AppFooter from './AppFooter';
 import AppHeader from './AppHeader';
-import { HomeMax } from '@mui/icons-material';
-import { House, HouseSimple, Ranking, User } from '@phosphor-icons/react';
-import Loading from './Loading';
 
+import { Ranking, User } from '@phosphor-icons/react';
 export const HomeLayout = () => {
   const { user } = useAuth();
   const outlet = useOutlet();

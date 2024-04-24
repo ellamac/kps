@@ -1,10 +1,18 @@
-import { v4 as uuidv4 } from 'uuid';
-
-/**
- * creates unique user-id and removes dashes from it
- * @returns 32-long string
- */
 export const createUserID = () => {
-  const id = uuidv4().replace(/-/g, '');
+  let id = '';
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const numbers = '0123456789';
+  const lettersLength = letters.length;
+  const numbersLength = numbers.length;
+  let counter = 0;
+  while (counter < 3) {
+    id += letters.charAt(Math.floor(Math.random() * lettersLength));
+    counter += 1;
+  }
+  counter = 0;
+  while (counter < 3) {
+    id += numbers.charAt(Math.floor(Math.random() * numbersLength));
+    counter += 1;
+  }
   return id;
 };

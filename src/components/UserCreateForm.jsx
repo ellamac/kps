@@ -142,9 +142,7 @@ const UserCreateForm = ({ createUser }) => {
               label='Sinun savun numero'
               name='entry.2072447703'
               value={newUser.savu_nro}
-              type='number'
-              max={999}
-              min={100}
+              type='text'
               required
               onChange={(e) =>
                 setNewUser((prev) => {

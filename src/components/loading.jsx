@@ -17,7 +17,7 @@ const Loading = (props) => {
         <div className='side-b'>✋</div>
       </div> */}
 
-      <div class='spinner'></div>
+      <div className='spinner'></div>
     </section>
   );
 };

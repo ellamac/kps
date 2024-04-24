@@ -8,9 +8,10 @@ const UserLoginForm = ({ login }) => {
     <section className='loginUser'>
       <h2>Kirjaudu tunnisteella</h2>
       <form>
-        <NewCodeInput
-          inputUserID={inputUserID}
-          setInputUserID={setInputUserID}
+        <input
+          type='text'
+          onChange={(e) => setInputUserID(e.target.value)}
+          value={inputUserID}
         />
 
         <p>

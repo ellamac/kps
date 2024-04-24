@@ -44,7 +44,7 @@ export const ProfilePage = () => {
           ottamalla screenshot.
         </p>
         <p>Sinun käyttäjätunniste on:</p>
-        <NewCodeInput readOnly value={user.kayttaja_id} />
+        <input type='text' readOnly value={user.kayttaja_id} />
         <CopyToClipboard text={user.kayttaja_id} onCopy={onCopyText}>
           <button>{copyStatus ? 'Kopioitu!' : 'Kopioi'}</button>
         </CopyToClipboard>

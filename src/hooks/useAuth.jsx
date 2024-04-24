@@ -16,20 +16,19 @@ export const AuthProvider = ({ children, userData }) => {
   };
 
   const login = async (data) => {
-    const existingUser = await userExists(data);
-    console.log(data, existingUser);
-    if (existingUser) {
+    const [existingID, existingName] = await userExists(data);
+    console.log(data, existingID, existingName);
+    if (existingID) {
       const { currentPoints } = await getPoints();
       const userWithPoints = currentPoints.find(
-        (u) =>
-          u.nimi === existingUser.nimi && u.savu_nro === existingUser.savu_nro
+        (u) => u.nimi === existingID.nimi && u.savu_nro === existingID.savu_nro
       );
-      console.log('test', existingUser, userWithPoints);
-      console.log({ ...userWithPoints, ...existingUser });
-      setUser({ ...userWithPoints, ...existingUser });
+      console.log('test', existingID, userWithPoints);
+      console.log({ ...userWithPoints, ...existingID });
+      setUser({ ...userWithPoints, ...existingID });
       navigate('/dashboard/profile', { replace: true });
     }
-    if (!existingUser) {
+    if (!existingID) {
       console.log('user doesnt exists');
     }
   };
@@ -41,20 +40,19 @@ export const AuthProvider = ({ children, userData }) => {
 
   const updateUser = async (data) => {
     setUser({});
-    const existingUser = await userExists(data);
-    console.log('userupate', data, existingUser);
-    console.log(data, existingUser);
-    if (existingUser) {
+    const [existingID, existingName] = await userExists(data);
+    console.log('userupate', data, existingID, existingName);
+    console.log(data, existingID);
+    if (existingID) {
       const { currentPoints } = await getPoints();
       const userWithPoints = currentPoints.find(
-        (u) =>
-          u.nimi === existingUser.nimi && u.savu_nro === existingUser.savu_nro
+        (u) => u.nimi === existingID.nimi && u.savu_nro === existingID.savu_nro
       );
-      console.log('test', existingUser, userWithPoints);
-      console.log({ ...userWithPoints, ...existingUser });
-      setUser({ ...userWithPoints, ...existingUser });
+      console.log('test', existingID, userWithPoints);
+      console.log({ ...userWithPoints, ...existingID });
+      setUser({ ...userWithPoints, ...existingID });
     }
-    if (!existingUser) {
+    if (!existingID) {
       setUser(data);
       console.log('user doesnt exists');
     }
